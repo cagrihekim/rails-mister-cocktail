@@ -1,0 +1,7 @@
+<div class="form">
+  <%= simple_form_for(@cocktails) do |c| %>
+    <%= c.input :ingredients %>
+    <%= c.input :doses %>
+    <%= c.submit 'Add Cocktail', class: 'button' %>
+  <% end %>
+</div>

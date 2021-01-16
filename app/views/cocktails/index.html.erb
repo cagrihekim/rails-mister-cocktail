@@ -1,0 +1,10 @@
+<h1>Cocktails</h1>
+
+<% @cocktails.each do |drink| %>
+<%= link_to drink.name, cocktail_path(drink.id), class: "btn btn-primary" %>
+<% end %>
+
+<div class= "new-cocktail">
+  <h1>Add a Cocktail</h1>
+  <%= render 'form' %>
+</div>
