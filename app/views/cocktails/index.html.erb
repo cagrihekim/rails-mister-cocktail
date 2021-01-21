@@ -1,19 +1,21 @@
-<h1>Cocktails</h1>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.9),rgba(0,0,0,0.4)), url(<%= image_path "whisky-banner.jpg" %>);">
+<!--   <div class="container">
+    <h5>
+      “Never been hungover. After I’ve had too much whiskey, I cook myself a large flank steak, pan-fried in salted butter. I eat that, put on a pair of wet socks and go to sleep.”
+    </h5>
+      <p class="font-italic">Ron Swanson</p>
+  </div> -->
+  <div class="container mt-5">
+    <div class="cards">
+      <% @cocktails.each do |cocktail| %>
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(<%#= cl_image_path cocktail.photo.key %>);">
+          <%= link_to cocktail.name, cocktail_path(cocktail) %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+    <%= link_to 'Add a new cocktail', new_cocktail_path, class: "btn btn-outline-dark btn-sm mt-3" %>
+  <%#= link_to 'Back', root, class: "btn btn-outline-dark ml-3" %>
 
+<!-- https://i.imgflip.com/hs0o7.gif -->
 
-<!-- app/views/articles/index.html.erb -->
-<%= cl_image_tag("cowc6lfilvn59oa7mvgf",
-      width: 400, height: 300, crop: :fill) %>
-
-<!-- for face detection -->
-<%= cl_image_tag("vxcqcjq5n5unjav5o8la",
-      width: 150, height: 150, crop: :thumb, gravity: :face) %>
-
-<% @cocktails.each do |drink| %>
-<%= link_to drink.name, cocktail_path(drink.id), class: "btn btn-primary" %>
-<% end %>
-
-<div class= "new-cocktail">
-  <h1>Add a Cocktail</h1>
-  <%= render 'form' %>
-</div>

@@ -1,13 +1,12 @@
 class CocktailsController < ApplicationController
-  before_action :find_cocktail, only: [:show, :edit, :update, :destroy]
+  before_action :set_cocktail, only: [:show, :destroy]
+
   def index
     @cocktails = Cocktail.all
-    @cocktail = Cocktail.new
   end
 
   def show
-    @cocktail = Cocktail.find(params[:id])
-    # @real_dose = @cocktail.doses
+    @doses = @cocktail.doses
     @dose = Dose.new
   end
 
@@ -17,20 +16,11 @@ class CocktailsController < ApplicationController
 
   def create
     @cocktail = Cocktail.new(cocktail_params)
-    # the happy path.... if everything works correctly
     if @cocktail.save
       redirect_to cocktail_path(@cocktail)
     else
-      render 'index'
+      render :new
     end
-  end
-
-  def edit
-  end
-
-  def update
-    @cocktail.update(cocktail_params) # happy path, everything goes well
-    redirect_to cocktail_path(@cocktail)
   end
 
   def destroy
@@ -40,11 +30,12 @@ class CocktailsController < ApplicationController
 
   private
 
-  def find_cocktail
+  def set_cocktail
     @cocktail = Cocktail.find(params[:id])
   end
 
   def cocktail_params
-    params.require(:cocktail).permit(:name)
+    params.require(:cocktail).permit(:name, :photo)
   end
 end
+

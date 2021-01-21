@@ -1,0 +1,10 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.9),rgba(0,0,0,0.4)), url(<%= image_path "whisky-banner.jpg" %>);">
+<div class="container col-3">
+  <h2 class="pb-5">Add ingredients</h2>
+  <%= simple_form_for [@cocktail, @dose] do |f| %>
+    <%= f.association :ingredient, input_html: { class: "beautiful-dropdown" }, include_hidden: false %>
+    <%= f.input :description %>
+    <%= f.button :submit, class: "btn btn-secondary" %>
+  <% end %>
+  <%= link_to 'Cancel', cocktails_path, class: "btn btn-outline-dark btn-sm mt-3" %>
+</div>

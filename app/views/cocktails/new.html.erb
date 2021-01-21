@@ -1,7 +1,11 @@
-<div class="form">
-  <%= simple_form_for(@cocktails) do |c| %>
-    <%= c.input :ingredients %>
-    <%= c.input :doses %>
-    <%= c.submit 'Add Cocktail', class: 'button' %>
-  <% end %>
-</div>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.9),rgba(0,0,0,0.4)), url(<%= image_path "whisky-banner.jpg" %>);">
+  <div class="container col-3">
+    <h2 class="pb-5">Add a cocktail</h2>
+      <%= simple_form_for @cocktail do |f| %>
+        <%= f.input :name %>
+        <%= f.input :photo, as: :file %>
+        <%= f.button :submit, class: 'btn btn-secondary mt-3' %>
+      <% end %>
+      <%= link_to 'Cancel', cocktails_path, class: "btn btn-outline-dark mt-3 btn-sm" %>
+    </div>
+
